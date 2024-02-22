@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
             // Start jumbling effect
             jumbleText('infoLink', 'INFO');
             jumbleText('contactLink', 'CONTACT');
+            jumbleText('projectLink', 'PROJECTS')
         }
     }, 30); // Adjust time as needed
 });
@@ -75,6 +76,10 @@ document.getElementById('contactLink').addEventListener('click', function(event)
     event.preventDefault();
     toggleContent('contactContent', true);
 });
+document.getElementById('projectLink').addEventListener('click', function(event) {
+    event.preventDefault();
+    toggleContent('projectContent', true);
+});
 
 document.getElementById('backLink').addEventListener('click', function(event) {
     event.preventDefault();
@@ -98,7 +103,7 @@ document.getElementById('email').addEventListener('mouseout', function() {
 });
 // Assuming your original JavaScript code is in place...
 
-// Modified hover effects for "INFO" and "CONTACT" with timeout
+// Modified hover effects for "INFO" and "CONTACT" and "PROJECTS" with timeout
 document.getElementById('infoLink').addEventListener('mouseenter', function() {
     jumbleTextHover('infoLink', 'INFO', this);
 });
@@ -113,6 +118,13 @@ document.getElementById('contactLink').addEventListener('mouseenter', function()
 
 document.getElementById('contactLink').addEventListener('mouseleave', function() {
     setTimeout(() => { this.innerText = 'CONTACT'; }, 1000); // Reset text after 1 second
+});
+document.getElementById('projectLink').addEventListener('mouseenter', function() {
+    jumbleTextHover('projectLink', 'PROJECTS', this);
+});
+
+document.getElementById('projectLink').addEventListener('mouseleave', function() {
+    setTimeout(() => { this.innerText = 'PROJECTS'; }, 1000); // Reset text after 1 second
 });
 
 // Adjusted jumbleTextHover function for hover effect with timeout
