@@ -17,14 +17,11 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 30); // Adjust time as needed
 });
 
-const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
 function jumbleText(elementId, originalText) {
     const element = document.getElementById(elementId);
     let counter = 0;
-    const maxIterations = 20; // Run the jumble effect for a set number of iterations
+    const maxIterations = 20;
     const interval = setInterval(() => {
-        // Generate jumbled text
         let jumbledText = '';
         for (let i = 0; i < originalText.length; i++) {
             jumbledText += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
@@ -34,45 +31,39 @@ function jumbleText(elementId, originalText) {
         counter++;
         if (counter >= maxIterations) {
             clearInterval(interval);
-            element.innerText = originalText; // Reset to original text
+            element.innerText = originalText;
         }
-    }, 50); // Speed of jumbling
+    }, 50);
 }
 
-// Updated toggleContent function with improved BACK button handling
+const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 function toggleContent(contentId, hideMain) {
-    const mainContentItems = document.querySelectorAll('#mainContent > h1, #mainContent > p, #menu');
+    const mainContent = document.getElementById('mainContent');
+    const infoContent = document.getElementById('infoContent');
+    const contactContent = document.getElementById('contactContent');
     const backButton = document.getElementById('backButton');
-    const allContents = document.querySelectorAll('.info-contact-content'); // Assuming you have this class for infoContent and contactContent
 
-    // Toggle main content visibility and manage specific content
     if (hideMain) {
-        // Hide main content
-        mainContentItems.forEach(item => {
-            item.style.display = 'none';
-        });
-        backButton.style.display = 'block'; // Show back button
-    } else {
-        // Show main content
-        mainContentItems.forEach(item => {
-            item.style.display = ''; // Revert display to default
-        });
-        backButton.style.display = 'none'; // Hide back button
-    }
-
-    // Handle specific content display
-    allContents.forEach(content => {
-        if (content.id === contentId) {
-            content.classList.remove('hidden');
-            setTimeout(() => content.style.opacity = 1, 10); // Apply opacity transition
-        } else {
-            content.style.opacity = 0; // Hide other contents
-            setTimeout(() => content.classList.add('hidden'), 200); // Wait for opacity transition, then hide
+        // Hiding main content and showing specific content
+        mainContent.style.display = 'none';
+        backButton.style.display = 'block';
+        infoContent.style.display = 'none';
+        contactContent.style.display = 'none';
+        if (contentId) {
+            document.getElementById(contentId).style.display = 'block';
+            setTimeout(() => document.getElementById(contentId).style.opacity = 1, 10);
         }
-    });
+    } else {
+        // Showing main content and hiding back button
+        mainContent.style.display = 'block';
+        setTimeout(() => mainContent.style.opacity = 1, 10);
+        backButton.style.display = 'none';
+        infoContent.style.display = 'none';
+        contactContent.style.display = 'none';
+    }
 }
 
-// Event listeners for INFO and CONTACT links, and BACK button
 document.getElementById('infoLink').addEventListener('click', function(event) {
     event.preventDefault();
     toggleContent('infoContent', true);
@@ -83,9 +74,9 @@ document.getElementById('contactLink').addEventListener('click', function(event)
     toggleContent('contactContent', true);
 });
 
-document.getElementById('backLink').addEventListener('click', function(event) {
+document.getElementById('backButton').addEventListener('click', function(event) {
     event.preventDefault();
-    toggleContent(null, false); // No specific content to show, just show main content
+    toggleContent(null, false); // This will show the main content without re-triggering the animation
 });
 
 // Mouseover and mouseout event listeners remain unchanged
