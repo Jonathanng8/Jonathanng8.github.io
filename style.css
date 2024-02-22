@@ -94,3 +94,9 @@ p {
     color: white; /* Maintain white text on hover */
     text-decoration: none; /* Ensure underline doesn't reappear on hover */
 }
+.game-image {
+    width: 50%; /* Adjust width as necessary */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Use block to center the image if needed */
+    margin: 0 auto; /* Center the image horizontally */
+}
