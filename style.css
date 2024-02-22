@@ -11,13 +11,13 @@ body, html {
 }
 
 #loadingScreen {
-    position: absolute; /* Changed to absolute to ensure it covers the whole page initially */
+    position: absolute;
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 1; /* Ensure it's above the main content initially */
+    z-index: 1;
 }
 
 #counter {
@@ -26,17 +26,18 @@ body, html {
 }
 
 #mainContent {
-    /* Ensure the main content takes full width and is centered */
     width: 100vw;
-    height: 100vh;
+    height: auto; /* Changed to auto to accommodate content height */
+    min-height: 100vh; /* Ensure it covers at least the whole viewport */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     opacity: 0;
     transition: opacity 2s;
-    position: relative; /* Make sure it's positioned relative to transition in */
-    z-index: 0; /* Lower z-index after loading */
+    position: relative;
+    z-index: 0;
+    overflow-y: auto; /* Allow scrolling */
 }
 
 .hidden {
@@ -44,7 +45,7 @@ body, html {
 }
 
 h1, p, #menu {
-    margin: 20px 0; /* Add some spacing */
+    margin: 20px 0;
 }
 
 h1 {
@@ -69,34 +70,36 @@ p {
 #menu a:hover {
     opacity: 1;
 }
+
 .info-contact-content {
     transition: opacity 2s ease-in-out;
-    opacity: 0; /* Start invisible */
+    opacity: 0;
 }
 
-/* Additional style for hover effects directly on phone and email might be needed */
 #phone:hover, #email:hover {
-    cursor: pointer; /* Indicates an interactive element */
+    cursor: pointer;
 }
+
 #phone, #email, #infoLink, #contactLink {
-    color: white; /* Ensure text is white */
+    color: white;
 }
 
 #phone:hover, #email:hover, #infoLink:hover, #contactLink:hover {
-    color: white; /* Maintain white text on hover */
-}
-#phone, #email, #infoLink, #contactLink, #backLink {
-    color: white; /* Ensure text is white */
-    text-decoration: none; /* Remove underline */
+    color: white;
 }
 
-#phone:hover, #email:hover, #infoLink:hover, #contactLink:hover, #backLink:hover {
-    color: white; /* Maintain white text on hover */
-    text-decoration: none; /* Ensure underline doesn't reappear on hover */
+#phone, #email, #infoLink, #contactLink, #backLink {
+    text-decoration: none;
 }
+
+.project-scroll {
+    max-height: 400px; /* Set a max height for the projects area */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
 .game-image {
-    width: 50%; /* Adjust width as necessary */
+    max-width: 50%; /* Adjust the image size */
     height: auto; /* Maintain aspect ratio */
-    display: block; /* Use block to center the image if needed */
-    margin: 0 auto; /* Center the image horizontally */
+    display: block;
+    margin: 0 auto; /* Center the image */
 }
