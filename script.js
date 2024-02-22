@@ -96,31 +96,35 @@ document.getElementById('email').addEventListener('mouseover', function() {
 document.getElementById('email').addEventListener('mouseout', function() {
     this.innerText = 'EMAIL';
 });
-// Original JavaScript code remains the same...
+// Assuming your original JavaScript code is in place...
 
-// Add hover effects for "INFO" and "CONTACT"
+// Modified hover effects for "INFO" and "CONTACT" with timeout
 document.getElementById('infoLink').addEventListener('mouseenter', function() {
-    jumbleTextHover('infoLink', 'INFO');
+    jumbleTextHover('infoLink', 'INFO', this);
 });
 
 document.getElementById('infoLink').addEventListener('mouseleave', function() {
-    this.innerText = 'INFO'; // Reset text to original on mouse leave
+    setTimeout(() => { this.innerText = 'INFO'; }, 1000); // Reset text after 1 second
 });
 
 document.getElementById('contactLink').addEventListener('mouseenter', function() {
-    jumbleTextHover('contactLink', 'CONTACT');
+    jumbleTextHover('contactLink', 'CONTACT', this);
 });
 
 document.getElementById('contactLink').addEventListener('mouseleave', function() {
-    this.innerText = 'CONTACT'; // Reset text to original on mouse leave
+    setTimeout(() => { this.innerText = 'CONTACT'; }, 1000); // Reset text after 1 second
 });
 
-// Adjusted jumbleText function for hover effect
-function jumbleTextHover(elementId, originalText) {
-    const element = document.getElementById(elementId);
+// Adjusted jumbleTextHover function for hover effect with timeout
+function jumbleTextHover(elementId, originalText, element) {
     let jumbledText = '';
     for (let i = 0; i < originalText.length; i++) {
         jumbledText += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
     }
     element.innerText = jumbledText;
+
+    // Set a timeout to revert to original text after 1 second
+    setTimeout(() => {
+        element.innerText = originalText;
+    }, 1000);
 }
