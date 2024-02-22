@@ -101,9 +101,8 @@ document.getElementById('email').addEventListener('mouseover', function() {
 document.getElementById('email').addEventListener('mouseout', function() {
     this.innerText = 'EMAIL';
 });
-// Assuming your original JavaScript code is in place...
 
-// Modified hover effects for "INFO" and "CONTACT" and "PROJECTS" with timeout
+//hover effects for "INFO" and "CONTACT" and "PROJECTS" with timeout
 document.getElementById('infoLink').addEventListener('mouseenter', function() {
     jumbleTextHover('infoLink', 'INFO', this);
 });
