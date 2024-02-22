@@ -1,13 +1,19 @@
 body, h1, p, a {
+    margin: 0;
+    padding: 0;
     color: white;
     font-family: Arial, sans-serif;
     text-align: center;
-    margin: 0;
-    padding: 0;
+    text-transform: uppercase;
+    background-color: black;
 }
 
 body {
-    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: black; /* Ensure background is black */
 }
 
 .hidden {
@@ -15,20 +21,12 @@ body {
 }
 
 .counter {
-    position: absolute;
-    left: 0;
-    top: 50%;
     font-size: 50px;
-    opacity: 0;
-    transition: all 2s ease-in-out;
+    color: white; /* Ensure text is white */
 }
 
-#mainContent {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
+#mainContent h1, #mainContent p, .buttons a {
+    color: white; /* Text color white for all elements */
 }
 
 .buttons a {
@@ -40,8 +38,3 @@ body {
     text-decoration: none;
     transition: all 0.3s ease;
 }
-
-.buttons a:hover {
-    /* Placeholder for JS handling */
-}
-

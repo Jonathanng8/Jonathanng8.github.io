@@ -1,38 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     let counter = document.getElementById('counter');
-    let values = [0, 10, 30, 70, 100];
-    let index = 0;
-
-    function updateCounter() {
-        if (index < values.length) {
-            counter.textContent = values[index];
-            counter.style.opacity = 1;
-            let position = index * (100 / (values.length - 1));
-            counter.style.left = `calc(${position}% - ${position}px)`;
-
-            setTimeout(() => {
-                counter.style.opacity = 0;
-                index++;
-                setTimeout(updateCounter, 500);
-            }, 1000);
-        } else {
-            document.getElementById('mainContent').classList.remove('hidden');
+    let mainContent = document.getElementById('mainContent');
+    let count = 0;
+    let interval = setInterval(function() {
+        counter.innerText = count;
+        count += count < 10 ? 10 : count < 30 ? 20 : count < 70 ? 40 : count < 100 ? 30 : 0;
+        if (count > 100) {
+            clearInterval(interval);
+            counter.classList.add('hidden');
+            mainContent.classList.remove('hidden');
         }
-    }
-
-    updateCounter();
-
-    function jumbleText(elementId) {
-        const element = document.getElementById(elementId);
-        const originalText = element.textContent;
-        element.addEventListener('mouseover', () => {
-            element.textContent = originalText.split('').sort(() => 0.5 - Math.random()).join('');
-        });
-        element.addEventListener('mouseout', () => {
-            element.textContent = originalText;
-        });
-    }
-
-    jumbleText('info');
-    jumbleText('contact');
+    }, 200); // Adjust time as needed for a smoother or quicker transition
 });
