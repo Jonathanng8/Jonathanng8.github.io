@@ -96,24 +96,3 @@ document.getElementById('email').addEventListener('mouseover', function() {
 document.getElementById('email').addEventListener('mouseout', function() {
     this.innerText = 'EMAIL';
 });
-// After your existing JavaScript, add:
-
-// Scroll reveal function
-function revealOnScroll() {
-    const elements = document.querySelectorAll('.hidden');
-    elements.forEach((element) => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const viewportHeight = window.innerHeight;
-
-        if (elementPosition < viewportHeight - 100) { // Adjust as needed
-            element.classList.add('isVisible');
-            element.classList.remove('hidden');
-        }
-    });
-}
-
-// Event listener for scroll
-window.addEventListener('scroll', revealOnScroll);
-
-// Initial call to reveal elements that should be immediately visible
-revealOnScroll();
