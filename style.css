@@ -2,41 +2,70 @@ body, html {
     height: 100%;
     margin: 0;
     font-family: Arial, sans-serif;
-    color: white;
     background-color: black;
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
+#loadingScreen {
+    position: absolute; /* Changed to absolute to ensure it covers the whole page initially */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Ensure it's above the main content initially */
+}
+
+#counter {
+    font-size: 5em;
+    font-weight: bold;
+}
+
+#mainContent {
+    /* Ensure the main content takes full width and is centered */
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 2s;
+    position: relative; /* Make sure it's positioned relative to transition in */
+    z-index: 0; /* Lower z-index after loading */
+}
+
 .hidden {
     display: none;
 }
 
-#mainContent, .section {
-    transition: opacity 2s ease-in-out;
-    opacity: 0;
+h1, p, #menu {
+    margin: 20px 0; /* Add some spacing */
 }
 
-.section {
-    background-color: #333; /* Slightly lighter background for visibility */
-    padding: 20px;
-    margin-top: 20px;
-    display: block; /* Change to block but start as hidden via opacity */
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.2em;
 }
 
 #menu a {
-    color: white;
     text-decoration: none;
+    color: white;
+    font-weight: bold;
     margin: 0 10px;
-    font-size: 20px;
-    border: 1px solid white;
-    padding: 5px;
+    font-size: 1.2em;
+    opacity: 0.7;
+    transition: opacity 0.5s;
 }
 
 #menu a:hover {
-    cursor: pointer;
-    background-color: white;
-    color: black;
+    opacity: 1;
 }
