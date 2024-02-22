@@ -78,8 +78,9 @@ document.getElementById('contactLink').addEventListener('click', function(event)
 });
 document.getElementById('projectLink').addEventListener('click', function(event) {
     event.preventDefault();
-    toggleContent('projectContent', true);
+    toggleContent('projectsContent', true); // Corrected from 'projectContent' to 'projectsContent'
 });
+
 
 document.getElementById('backLink').addEventListener('click', function(event) {
     event.preventDefault();
