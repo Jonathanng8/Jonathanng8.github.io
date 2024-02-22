@@ -1,47 +1,47 @@
-body, html {
-    height: 100%;
+body, h1, p, a {
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
     margin: 0;
+    padding: 0;
+}
+
+body {
     background-color: black;
-    color: white; /* Ensures text is white */
-    font-family: Arial, sans-serif; /* Arial font for all text */
-    font-weight: bold; /* Makes all text bold */
-    overflow: hidden;
-  }
-  
-  #loader-wrapper {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: start;
-    justify-content: start;
-  }
-  
-  #loader {
-    color: white; /* White text for the loader */
-    font-size: 5em;
-    transition: transform 2s;
-  }
-  
-  #content {
+}
+
+.hidden {
     display: none;
+}
+
+.counter {
     position: absolute;
+    left: 0;
+    top: 50%;
+    font-size: 50px;
+    opacity: 0;
+    transition: all 2s ease-in-out;
+}
+
+#mainContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center; /* Ensures text alignment is centered for your name and details */
-  }
-  
-  a {
-    color: white; /* White text for links */
+}
+
+.buttons a {
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid white;
+    display: inline-block;
+    cursor: pointer;
     text-decoration: none;
-    margin: 0 10px;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
+    transition: all 0.3s ease;
+}
+
+.buttons a:hover {
+    /* Placeholder for JS handling */
+}
+
