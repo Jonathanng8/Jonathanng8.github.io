@@ -17,11 +17,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 30); // Adjust time as needed
 });
 
+const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 function jumbleText(elementId, originalText) {
     const element = document.getElementById(elementId);
     let counter = 0;
-    const maxIterations = 20;
+    const maxIterations = 20; // Run the jumble effect for a set number of iterations
     const interval = setInterval(() => {
+        // Generate jumbled text
         let jumbledText = '';
         for (let i = 0; i < originalText.length; i++) {
             jumbledText += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
@@ -31,36 +34,35 @@ function jumbleText(elementId, originalText) {
         counter++;
         if (counter >= maxIterations) {
             clearInterval(interval);
-            element.innerText = originalText;
+            element.innerText = originalText; // Reset to original text
         }
-    }, 50);
+    }, 50); // Speed of jumbling
 }
 
-const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-
 function toggleContent(contentId, hideMain) {
-    const mainContent = document.getElementById('mainContent');
-    const infoContent = document.getElementById('infoContent');
-    const contactContent = document.getElementById('contactContent');
+    const mainContentItems = document.querySelectorAll('#mainContent > h1, #mainContent > p, #menu');
     const backButton = document.getElementById('backButton');
+    const allContents = document.querySelectorAll('.info-contact-content'); 
 
     if (hideMain) {
-        // Hiding main content and showing specific content
-        mainContent.style.display = 'none';
+        mainContentItems.forEach(item => item.style.display = 'none');
         backButton.style.display = 'block';
-        infoContent.style.display = 'none';
-        contactContent.style.display = 'none';
-        if (contentId) {
-            document.getElementById(contentId).style.display = 'block';
-            setTimeout(() => document.getElementById(contentId).style.opacity = 1, 10);
-        }
+        allContents.forEach(content => {
+            if (content.id === contentId) {
+                content.classList.remove('hidden');
+                setTimeout(() => content.style.opacity = 1, 10); // Make visible with opacity
+            } else {
+                content.style.opacity = 0; // Immediately start hiding others
+                setTimeout(() => content.classList.add('hidden'), 200); // Then hide after opacity transition
+            }
+        });
     } else {
-        // Showing main content and hiding back button
-        mainContent.style.display = 'block';
-        setTimeout(() => mainContent.style.opacity = 1, 10);
-        backButton.style.display = 'none';
-        infoContent.style.display = 'none';
-        contactContent.style.display = 'none';
+        mainContentItems.forEach(item => item.style.display = ''); // Show main content
+        backButton.style.display = 'none'; // Hide back button
+        allContents.forEach(content => {
+            content.classList.add('hidden'); // Immediately hide content
+            content.style.opacity = 0; // Ensure it's not visible
+        });
     }
 }
 
@@ -74,12 +76,11 @@ document.getElementById('contactLink').addEventListener('click', function(event)
     toggleContent('contactContent', true);
 });
 
-document.getElementById('backButton').addEventListener('click', function(event) {
+document.getElementById('backLink').addEventListener('click', function(event) {
     event.preventDefault();
-    toggleContent(null, false); // This will show the main content without re-triggering the animation
+    toggleContent('', false); // Hide specific content and show main content
 });
 
-// Mouseover and mouseout event listeners remain unchanged
 document.getElementById('phone').addEventListener('mouseover', function() {
     this.innerText = '(813)598-2735';
 });
