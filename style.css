@@ -1,27 +1,71 @@
-/* Add this to your existing CSS file */
-.contentSection {
-    position: absolute;
-    top: 0;
-    left: 0;
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#loadingScreen {
+    position: absolute; /* Changed to absolute to ensure it covers the whole page initially */
     width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Ensure it's above the main content initially */
+}
+
+#counter {
+    font-size: 5em;
+    font-weight: bold;
+}
+
+#mainContent {
+    /* Ensure the main content takes full width and is centered */
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: black; /* Match the background */
-    color: white; /* Match the text color */
     opacity: 0;
-    transition: opacity 2s ease;
-    z-index: 2; /* Above mainContent */
+    transition: opacity 2s;
+    position: relative; /* Make sure it's positioned relative to transition in */
+    z-index: 0; /* Lower z-index after loading */
 }
 
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1em;
-    background-color: grey;
+.hidden {
+    display: none;
+}
+
+h1, p, #menu {
+    margin: 20px 0; /* Add some spacing */
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+#menu a {
+    text-decoration: none;
     color: white;
-    border: none;
-    cursor: pointer;
+    font-weight: bold;
+    margin: 0 10px;
+    font-size: 1.2em;
+    opacity: 0.7;
+    transition: opacity 0.5s;
+}
+
+#menu a:hover {
+    opacity: 1;
 }
