@@ -8,9 +8,11 @@ document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("loadingScreen").style.display = 'none';
             const mainContent = document.getElementById("mainContent");
             mainContent.classList.remove("hidden");
-            setTimeout(() => mainContent.style.opacity = 1, 10); // Fade in main content
+            setTimeout(() => mainContent.style.opacity = 1, 10); // Add a slight delay to ensure the transition plays
+
+            // Remove the direct call to jumbleText function here
         }
-    }, 30);
+    }, 30); // Adjust time as needed
 
     // Setup jumble on hover for "INFO" and "CONTACT"
     const infoLink = document.getElementById('infoLink');
@@ -18,25 +20,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
     setupJumbleOnHover(infoLink, 'INFO');
     setupJumbleOnHover(contactLink, 'CONTACT');
-
-    // Event listeners for showing sections
-    infoLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleSection('infoSection');
-    });
-
-    contactLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        toggleSection('contactSection');
-    });
-
-    document.getElementById('backFromInfo').addEventListener('click', function() {
-        toggleSection('infoSection');
-    });
-
-    document.getElementById('backFromContact').addEventListener('click', function() {
-        toggleSection('contactSection');
-    });
 });
 
 function setupJumbleOnHover(element, originalText) {
@@ -44,12 +27,12 @@ function setupJumbleOnHover(element, originalText) {
     element.addEventListener('mouseover', () => {
         interval = setInterval(() => {
             element.innerText = generateJumbledText(originalText.length);
-        }, 50);
+        }, 50); // Adjust the speed of jumbling as needed
     });
 
     element.addEventListener('mouseout', () => {
         clearInterval(interval);
-        element.innerText = originalText;
+        element.innerText = originalText; // Reset to the original text immediately
     });
 }
 
@@ -60,15 +43,4 @@ function generateJumbledText(length) {
         jumbledText += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
     }
     return jumbledText;
-}
-
-function toggleSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section.classList.contains('hidden')) {
-        section.classList.remove('hidden');
-        setTimeout(() => section.style.opacity = 1, 10); // Fade in
-    } else {
-        section.style.opacity = 0;
-        setTimeout(() => section.classList.add('hidden'), 2000); // Fade out
-    }
 }
