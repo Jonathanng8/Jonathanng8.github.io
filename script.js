@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", function() {
     }, 30); // Adjust time as needed
 });
 
+const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
 function jumbleText(elementId, originalText) {
     const element = document.getElementById(elementId);
     let counter = 0;
@@ -37,92 +39,56 @@ function jumbleText(elementId, originalText) {
     }, 50); // Speed of jumbling
 }
 
-const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-document.getElementById('infoLink').addEventListener('click', function() {
-    toggleContent('infoContent');
-});
+// Updated toggleContent function with improved BACK button handling
+function toggleContent(contentId, hideMain) {
+    const mainContentItems = document.querySelectorAll('#mainContent > h1, #mainContent > p, #menu');
+    const backButton = document.getElementById('backButton');
+    const allContents = document.querySelectorAll('.info-contact-content'); // Assuming you have this class for infoContent and contactContent
 
-document.getElementById('contactLink').addEventListener('click', function() {
-    toggleContent('contactContent');
-});
+    // Toggle main content visibility and manage specific content
+    if (hideMain) {
+        // Hide main content
+        mainContentItems.forEach(item => {
+            item.style.display = 'none';
+        });
+        backButton.style.display = 'block'; // Show back button
+    } else {
+        // Show main content
+        mainContentItems.forEach(item => {
+            item.style.display = ''; // Revert display to default
+        });
+        backButton.style.display = 'none'; // Hide back button
+    }
 
-document.getElementById('phone').addEventListener('mouseover', function() {
-    this.innerText = '(813)598-2735';
-});
-
-document.getElementById('phone').addEventListener('mouseout', function() {
-    this.innerText = 'PHONE';
-});
-
-document.getElementById('email').addEventListener('mouseover', function() {
-    this.innerText = 'JONATHANGON331@GMAIL.COM';
-});
-
-document.getElementById('email').addEventListener('mouseout', function() {
-    this.innerText = 'EMAIL';
-});
-
-function toggleContent(contentId) {
-    const infoContent = document.getElementById('infoContent');
-    const contactContent = document.getElementById('contactContent');
-    const targetContent = document.getElementById(contentId);
-
-    // Hide both sections first
-    infoContent.classList.add('hidden');
-    contactContent.classList.add('hidden');
-    infoContent.style.opacity = 0;
-    contactContent.style.opacity = 0;
-
-    // Show the target content
-    targetContent.classList.remove('hidden');
-    setTimeout(() => targetContent.style.opacity = 1, 10); // Delay for the fade-in effect
+    // Handle specific content display
+    allContents.forEach(content => {
+        if (content.id === contentId) {
+            content.classList.remove('hidden');
+            setTimeout(() => content.style.opacity = 1, 10); // Apply opacity transition
+        } else {
+            content.style.opacity = 0; // Hide other contents
+            setTimeout(() => content.classList.add('hidden'), 200); // Wait for opacity transition, then hide
+        }
+    });
 }
-// Updated JavaScript content with BACK functionality
 
+// Event listeners for INFO and CONTACT links, and BACK button
 document.getElementById('infoLink').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default anchor action
+    event.preventDefault();
     toggleContent('infoContent', true);
 });
 
 document.getElementById('contactLink').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default anchor action
+    event.preventDefault();
     toggleContent('contactContent', true);
 });
 
 document.getElementById('backLink').addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent default action
-    toggleContent(null, false); // Hide all info/contact content and show main content
+    event.preventDefault();
+    toggleContent(null, false); // No specific content to show, just show main content
 });
 
-function toggleContent(contentId, hideMain) {
-    const mainContentItems = document.querySelectorAll('#mainContent > h1, #mainContent > p, #menu');
-    const backButton = document.getElementById('backButton');
-    const infoContent = document.getElementById('infoContent');
-    const contactContent = document.getElementById('contactContent');
-    const allContents = [infoContent, contactContent];
-
-    // Toggle main content visibility
-    if (hideMain) {
-        mainContentItems.forEach(item => item.classList.add('hidden'));
-        backButton.classList.remove('hidden');
-        allContents.forEach(content => content.classList.add('hidden')); // Ensure all specific contents are hidden before showing the desired one
-    } else {
-        mainContentItems.forEach(item => item.classList.remove('hidden'));
-        backButton.classList.add('hidden');
-    }
-
-    // Show the specific content if any
-    if (contentId) {
-        const targetContent = document.getElementById(contentId);
-        targetContent.classList.remove('hidden');
-        setTimeout(() => targetContent.style.opacity = 1, 10); // Delay for fade-in effect
-    }
-
-    // Reset opacity for a smooth transition back
-    allContents.forEach(content => content.style.opacity = 0);
-}
-
-// Mouseover and mouseout events for CONTACT content
+// Mouseover and mouseout event listeners remain unchanged
 document.getElementById('phone').addEventListener('mouseover', function() {
     this.innerText = '(813)598-2735';
 });
