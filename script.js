@@ -44,3 +44,31 @@ function generateJumbledText(length) {
     }
     return jumbledText;
 }
+// Add to your existing JavaScript file
+document.getElementById('infoLink').addEventListener('click', function() {
+    toggleSectionDisplay('infoSection');
+});
+
+document.getElementById('contactLink').addEventListener('click', function() {
+    toggleSectionDisplay('contactSection');
+});
+
+document.getElementById('backFromInfo').addEventListener('click', function() {
+    toggleSectionDisplay('infoSection');
+});
+
+document.getElementById('backFromContact').addEventListener('click', function() {
+    toggleSectionDisplay('contactSection');
+});
+
+function toggleSectionDisplay(sectionId) {
+    const section = document.getElementById(sectionId);
+    const isHidden = section.classList.contains('hidden');
+    if (isHidden) {
+        section.classList.remove('hidden');
+        setTimeout(() => section.style.opacity = 1, 10); // Fade in
+    } else {
+        section.style.opacity = 0;
+        setTimeout(() => section.classList.add('hidden'), 2000); // Fade out, then hide
+    }
+}

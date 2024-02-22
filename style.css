@@ -69,3 +69,25 @@ p {
 #menu a:hover {
     opacity: 1;
 }
+/* Add this to your existing CSS file */
+.contentSection {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 2s;
+    position: absolute; /* Use absolute to overlay on top of mainContent */
+    top: 0;
+    left: 0;
+    z-index: 2; /* Ensure it's above the main content */
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
