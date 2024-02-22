@@ -1,0 +1,58 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+}
+
+#loadingScreen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#counter {
+    font-size: 5em;
+    font-weight: bold;
+}
+
+#mainContent {
+    text-align: center;
+    opacity: 0;
+    transition: opacity 2s;
+}
+
+.hidden {
+    display: none;
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    animation: fadeIn 2s forwards;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+#menu a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    margin: 0 10px;
+    font-size: 1.2em;
+    opacity: 0.7;
+    transition: opacity 0.5s;
+}
+
+#menu a:hover {
+    opacity: 1;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
