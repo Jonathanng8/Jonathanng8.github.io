@@ -69,3 +69,12 @@ p {
 #menu a:hover {
     opacity: 1;
 }
+.info-contact-content {
+    transition: opacity 2s ease-in-out;
+    opacity: 0; /* Start invisible */
+}
+
+/* Additional style for hover effects directly on phone and email might be needed */
+#phone:hover, #email:hover {
+    cursor: pointer; /* Indicates an interactive element */
+}

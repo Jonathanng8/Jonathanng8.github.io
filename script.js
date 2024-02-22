@@ -38,3 +38,42 @@ function jumbleText(elementId, originalText) {
 }
 
 const possibleCharacters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+document.getElementById('infoLink').addEventListener('click', function() {
+    toggleContent('infoContent');
+});
+
+document.getElementById('contactLink').addEventListener('click', function() {
+    toggleContent('contactContent');
+});
+
+document.getElementById('phone').addEventListener('mouseover', function() {
+    this.innerText = '(813)598-2735';
+});
+
+document.getElementById('phone').addEventListener('mouseout', function() {
+    this.innerText = 'PHONE';
+});
+
+document.getElementById('email').addEventListener('mouseover', function() {
+    this.innerText = 'JONATHANGON331@GMAIL.COM';
+});
+
+document.getElementById('email').addEventListener('mouseout', function() {
+    this.innerText = 'EMAIL';
+});
+
+function toggleContent(contentId) {
+    const infoContent = document.getElementById('infoContent');
+    const contactContent = document.getElementById('contactContent');
+    const targetContent = document.getElementById(contentId);
+
+    // Hide both sections first
+    infoContent.classList.add('hidden');
+    contactContent.classList.add('hidden');
+    infoContent.style.opacity = 0;
+    contactContent.style.opacity = 0;
+
+    // Show the target content
+    targetContent.classList.remove('hidden');
+    setTimeout(() => targetContent.style.opacity = 1, 10); // Delay for the fade-in effect
+}
