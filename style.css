@@ -78,3 +78,10 @@ p {
 #phone:hover, #email:hover {
     cursor: pointer; /* Indicates an interactive element */
 }
+#phone, #email, #infoLink, #contactLink {
+    color: white; /* Ensure text is white */
+}
+
+#phone:hover, #email:hover, #infoLink:hover, #contactLink:hover {
+    color: white; /* Maintain white text on hover */
+}

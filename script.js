@@ -96,3 +96,31 @@ document.getElementById('email').addEventListener('mouseover', function() {
 document.getElementById('email').addEventListener('mouseout', function() {
     this.innerText = 'EMAIL';
 });
+// Original JavaScript code remains the same...
+
+// Add hover effects for "INFO" and "CONTACT"
+document.getElementById('infoLink').addEventListener('mouseenter', function() {
+    jumbleTextHover('infoLink', 'INFO');
+});
+
+document.getElementById('infoLink').addEventListener('mouseleave', function() {
+    this.innerText = 'INFO'; // Reset text to original on mouse leave
+});
+
+document.getElementById('contactLink').addEventListener('mouseenter', function() {
+    jumbleTextHover('contactLink', 'CONTACT');
+});
+
+document.getElementById('contactLink').addEventListener('mouseleave', function() {
+    this.innerText = 'CONTACT'; // Reset text to original on mouse leave
+});
+
+// Adjusted jumbleText function for hover effect
+function jumbleTextHover(elementId, originalText) {
+    const element = document.getElementById(elementId);
+    let jumbledText = '';
+    for (let i = 0; i < originalText.length; i++) {
+        jumbledText += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+    }
+    element.innerText = jumbledText;
+}
