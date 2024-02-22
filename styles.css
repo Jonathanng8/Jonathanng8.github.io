@@ -2,6 +2,9 @@ body, html {
     height: 100%;
     margin: 0;
     background-color: black;
+    color: white; /* Ensures text is white */
+    font-family: Arial, sans-serif; /* Arial font for all text */
+    font-weight: bold; /* Makes all text bold */
     overflow: hidden;
   }
   
@@ -15,7 +18,7 @@ body, html {
   }
   
   #loader {
-    color: white;
+    color: white; /* White text for the loader */
     font-size: 5em;
     transition: transform 2s;
   }
@@ -29,11 +32,11 @@ body, html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
+    text-align: center; /* Ensures text alignment is centered for your name and details */
   }
   
   a {
-    color: #FFFFFF;
+    color: white; /* White text for links */
     text-decoration: none;
     margin: 0 10px;
   }
