@@ -1,103 +1,81 @@
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4; /* Light background to ease eye strain */
+    background-color: #FAFAFA;
+    color: #333;
 }
 
 .container {
-    max-width: 960px;
+    max-width: 1200px;
     margin: auto;
     padding: 20px;
 }
 
-/* Header and Nav Styles */
-header,
-nav {
-    background-color: #34495e; /* Dark shade for contrast */
-    color: #ffffff;
+header, nav, footer {
+    background-color: #263238;
+    color: #FFFFFF;
+    text-align: center;
     padding: 20px 0;
 }
 
-header h1 {
+header h1, footer p {
     margin: 0;
-    font-weight: 600;
 }
 
 nav ul {
     list-style: none;
     padding: 0;
-    text-align: center;
 }
 
-nav li {
-    display: inline-block;
-    margin: 0 15px;
+nav ul li {
+    display: inline;
+    margin: 0 20px;
 }
 
-nav a {
+nav ul li a {
+    color: #FFFFFF;
     text-decoration: none;
-    color: #ecf0f1;
-    font-weight: 500;
     transition: color 0.3s ease;
 }
 
-nav a:hover {
-    color: #f39c12; /* Highlight color for interactivity */
+nav ul li a:hover {
+    color: #FFC107;
 }
 
-/* Section Styles */
-.about, .skills, .contact {
-    background-color: #ffffff;
-    margin: 20px 0;
-    padding: 40px 20px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adding subtle shadows for depth */
-    border-radius: 8px; /* Rounded corners for a modern look */
+section {
+    margin: 40px 0;
+    background-color: #FFFFFF;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px;
+    border-radius: 8px;
 }
 
 h2 {
-    color: #2c3e50;
-    margin-bottom: 20px;
+    color: #263238;
 }
 
-ul {
-    list-style-position: inside;
-}
-
-/* Button Styles */
 button {
-    background-color: #e74c3c;
-    color: #ffffff;
+    background-color: #FF5722;
+    color: #FFFFFF;
     border: none;
     padding: 10px 20px;
-    border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s;
+    border-radius: 4px;
+    margin-top: 20px;
 }
 
 button:hover {
-    background-color: #c0392b;
+    background-color: #F4511E;
 }
 
-/* Footer Styles */
-footer {
-    background-color: #2c3e50;
-    color: #ffffff;
-    text-align: center;
-    padding: 20px 0;
-    font-size: 0.9em;
-}
-
-/* Responsive Design */
+/* Responsive design adjustments */
 @media (max-width: 768px) {
-    nav ul {
-        padding-top: 20px;
-    }
-
-    nav li {
+    nav ul li {
         display: block;
         margin: 10px 0;
     }
