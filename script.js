@@ -77,3 +77,64 @@ function toggleContent(contentId) {
     targetContent.classList.remove('hidden');
     setTimeout(() => targetContent.style.opacity = 1, 10); // Delay for the fade-in effect
 }
+// Updated JavaScript content with BACK functionality
+
+document.getElementById('infoLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default anchor action
+    toggleContent('infoContent', true);
+});
+
+document.getElementById('contactLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default anchor action
+    toggleContent('contactContent', true);
+});
+
+document.getElementById('backLink').addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent default action
+    toggleContent(null, false); // Hide all info/contact content and show main content
+});
+
+function toggleContent(contentId, hideMain) {
+    const mainContentItems = document.querySelectorAll('#mainContent > h1, #mainContent > p, #menu');
+    const backButton = document.getElementById('backButton');
+    const infoContent = document.getElementById('infoContent');
+    const contactContent = document.getElementById('contactContent');
+    const allContents = [infoContent, contactContent];
+
+    // Toggle main content visibility
+    if (hideMain) {
+        mainContentItems.forEach(item => item.classList.add('hidden'));
+        backButton.classList.remove('hidden');
+        allContents.forEach(content => content.classList.add('hidden')); // Ensure all specific contents are hidden before showing the desired one
+    } else {
+        mainContentItems.forEach(item => item.classList.remove('hidden'));
+        backButton.classList.add('hidden');
+    }
+
+    // Show the specific content if any
+    if (contentId) {
+        const targetContent = document.getElementById(contentId);
+        targetContent.classList.remove('hidden');
+        setTimeout(() => targetContent.style.opacity = 1, 10); // Delay for fade-in effect
+    }
+
+    // Reset opacity for a smooth transition back
+    allContents.forEach(content => content.style.opacity = 0);
+}
+
+// Mouseover and mouseout events for CONTACT content
+document.getElementById('phone').addEventListener('mouseover', function() {
+    this.innerText = '(813)598-2735';
+});
+
+document.getElementById('phone').addEventListener('mouseout', function() {
+    this.innerText = 'PHONE';
+});
+
+document.getElementById('email').addEventListener('mouseover', function() {
+    this.innerText = 'JONATHANGON331@GMAIL.COM';
+});
+
+document.getElementById('email').addEventListener('mouseout', function() {
+    this.innerText = 'EMAIL';
+});
